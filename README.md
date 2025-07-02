@@ -69,3 +69,127 @@ Manage configurations via `.env` file:
 DATABASE_URL=sqlite+aiosqlite:///./events.db
 ENVIRONMENT=development
 ```
+
+# POSTMAN Curl
+# Registering an Event
+curl --location 'http://localhost:8001/events' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "Wimbeldon",
+  "location": "France",
+  "start_time": "2025-07-10T07:47:19.193Z",
+  "end_time": "2025-07-14T08:47:19.193Z",
+  "max_capacity": 15
+}'
+
+
+# get the list of all attendeess of the event
+curl --location 'http://localhost:8001/events/2/attendees?skip=0&limit=15' \
+--header 'accept: application/json'
+
+[
+    {
+        "event_id": 2,
+        "name": "Roger federer",
+        "email": "roger@gmail.com.com",
+        "id": 6
+    },
+    {
+        "event_id": 2,
+        "name": "Maria sharapoa",
+        "email": "maria@gmail.com.com",
+        "id": 7
+    },
+    {
+        "event_id": 2,
+        "name": "rafal nadal",
+        "email": "rafal@gmail.com.com",
+        "id": 8
+    },
+    {
+        "event_id": 2,
+        "name": "bupendra",
+        "email": "bhupendra@gmail.com.com",
+        "id": 9
+    },
+    {
+        "event_id": 2,
+        "name": "sachin",
+        "email": "sachin@gmail.com.com",
+        "id": 10
+    },
+    {
+        "event_id": 2,
+        "name": "kevin",
+        "email": "kevin@gmail.com.com",
+        "id": 11
+    },
+    {
+        "event_id": 2,
+        "name": "David",
+        "email": "davic@gmail.com.com",
+        "id": 12
+    },
+    {
+        "event_id": 2,
+        "name": "Alastair",
+        "email": "alastair@gmail.com.com",
+        "id": 13
+    },
+    {
+        "event_id": 2,
+        "name": "Pete Sampras",
+        "email": "Pete@gmail.com.com",
+        "id": 14
+    },
+    {
+        "event_id": 2,
+        "name": "John McEnroe",
+        "email": "John@gmail.com.com",
+        "id": 15
+    },
+    {
+        "event_id": 2,
+        "name": "Carlos Alcaraz",
+        "email": "Carlos@gmail.com.com",
+        "id": 16
+    },
+    {
+        "event_id": 2,
+        "name": "Jannik Sinner",
+        "email": "Jannik@gmail.com.com",
+        "id": 17
+    },
+    {
+        "event_id": 2,
+        "name": "Jimmy Connors",
+        "email": "Jimmy@gmail.com.com",
+        "id": 18
+    },
+    {
+        "event_id": 2,
+        "name": "Rod Laver",
+        "email": "Rod@gmail.com.com",
+        "id": 19
+    },
+    {
+        "event_id": 2,
+        "name": "Bjorn Borg",
+        "email": "Bjorn@gmail.com",
+        "id": 20
+    }
+]
+
+# trying to resgister 16th attendee to an event
+curl --location 'http://localhost:8001/events/2/register' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "Novak Djokovic",
+  "email": "Novak@gmail.com"
+}'
+
+{
+    "detail": "Event is at full capacity"
+}
