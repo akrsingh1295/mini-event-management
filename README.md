@@ -84,7 +84,7 @@ curl --location 'http://localhost:8001/events' \
 }'
 
 
-# get the list of all attendeess of the event
+# get the list of all attendees of the event
 curl --location 'http://localhost:8001/events/2/attendees?skip=0&limit=15' \
 --header 'accept: application/json'
 
